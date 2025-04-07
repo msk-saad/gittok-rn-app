@@ -1,4 +1,4 @@
-import { StyleSheet, Image, Platform } from 'react-native';
+import { StyleSheet, Image, Platform, TouchableOpacity, Linking } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -12,14 +12,24 @@ export default function Explore() {
   const iconColor = theme === 'dark' ? '#ffffff' : '#000000';
 
   return (
-    <ThemedView style={styles.NavContainer}>
-      <FontAwesome name='github' size={35} color={iconColor} style={styles.gittokImage} />
-      <ThemedText type='title'>GitTok</ThemedText>
-    </ThemedView>
+    <>
+      <ThemedView style={styles.NavContainer}>
+        <FontAwesome name='github' size={35} color={iconColor} style={styles.gittokImage} />
+        <ThemedText type='title'>GitTok</ThemedText>
+      </ThemedView>
+
+      <ThemedView style={{backgroundColor: 'transparent'}}>
+        <ThemedView  style={{backgroundColor: 'transparent'}}>
+          <TouchableOpacity onPress={() => Linking.openURL("https://next-gittok.vercel.app/")}><ThemedText type='subtitle'>Visit Website Version</ThemedText></TouchableOpacity>
+        </ThemedView>
+
+        <Image source={}/>
+      </ThemedView>
+    </>
   );
 }
 
-const styles = StyleSheet.create({  
+const styles = StyleSheet.create({
   NavContainer: {         // Navbar
     flexDirection: 'row',
     gap: 8,
